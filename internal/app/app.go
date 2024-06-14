@@ -7,7 +7,7 @@ import (
 import "github.com/gin-gonic/gin"
 
 func StartApp() {
-	r := gin.Default()
+	g := gin.Default()
 
 	repo := repository.Repository{}
 	err := repo.Init()
@@ -20,17 +20,17 @@ func StartApp() {
 	}
 
 	// router
-	r.POST("/save", h.SaveURL)
+	g.POST("/save", h.SaveURL)
 
-	// r.GET("/goto/:shorten", h.Redirect)
+	// g.GET("/goto/:shorten", h.Redirect)
 	// example localhost:8080/goto/80775
 	// go get Long URl pair of 80775 and redirect to that
 
-	// r.GET("/all") list every shorten URL pair, pagination if possible
+	// g.GET("/all") list every shorten URL pair, pagination if possible
 
-	// r.PATCH("/patch/:shorten") // change long URL of this shorten
-	// r.DELETE("/delete/:shorten") // delete this shorten
+	// g.PATCH("/patch/:shorten") // change long URL of this shorten
+	// g.DELETE("/delete/:shorten") // delete this shorten
 
-	r.GET("/ping", h.Ping)
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	g.GET("/ping", h.Ping)
+	g.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
